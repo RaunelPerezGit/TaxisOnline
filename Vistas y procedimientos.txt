@@ -1,0 +1,79 @@
+Vista de listar viajes
+
+create view listarViaje as  select cve_via, tiposerv_via,fecha_via,horaini_via,horafin_via,puntoini_via,puntofin_via,cantkm_via,nom_cli,apellidos_usu,nom_con,apellidos_con,tiempoest_via,status_via,matricula_veh from viaje join conductorvehiculo on viaje.cve_convehi=conductorvehiculo.cve_convehi join conductor on conductorvehiculo.cve_con=conductor.cve_con join cliente on viaje.cve_cli=cliente.cve_cli join vehiculo on conductorvehiculo.cve_veh=vehiculo.cve_veh;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Transaccion para registrar el cliente y su tarjeta.
+
+Nota: las transacciones se encuentran hechas dentro de las funciones de PHP. 
+
+function registrarClienteTarjeta($datos)
+	{
+		$this->conectar();
+			$queri1="select cve_cli from cliente where telefono_cli='".$datos[4]."'";
+			$resultado=$this->select($queri1);
+			$resultado->data_seek(0);
+			$fila=$resultado->fetch_assoc();
+			$clave=$fila['cve_cli'];
+			if($resultado->num_rows>0){
+				$query2="INSERT into tarjeta values('".$datos[6]."','".$datos[7]."','".$datos[8]."','".$datos[9]."','".$datos[10]."', $clave);";
+				$insertar3=$this->insertar($query2);
+				if ($inserta3==1) {
+					echo "<script>alert('Registrado con exito!!!');</script>";
+				} else {
+					echo "<script>alert('Error al registrar la tarjeta!!!');</script>";
+				}
+			}else{
+				$this->transaccion();
+				$query1="INSERT into cliente values(null,'".$datos[0]."',curdate(),'cliente','".$datos[1]."','".$datos[2]."','".$datos[3]."','".$datos[4]."','".$datos[5]."');";
+			
+				$inserta1=$this->insertar($query1);
+				$id=$this->lastId();
+				$query2="INSERT into tarjeta values('".$datos[6]."','".$datos[7]."','".$datos[8]."','".$datos[9]."','".$datos[10]."', $id);";
+				$inserta2=$this->insertar($query2);
+
+				if ($inserta1==1 && $inserta2==1) {
+					$this->commit();
+					echo "<script>alert('Registrado con exito!!!');</script>";
+				} else {
+					$this->rollback;
+					echo "<script>alert('Error al registrar!!!');</script>";
+				}
+				
+			}
+			$this->desconectar();		
+	}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Transacción para registrar DuenioVehiculo
+
+function registrarDuenioVehiculo($datos)
+	{
+		$this->conectar();
+
+
+			$this->transaccion();
+			$query1="INSERT into duenio values(null,'".$datos[0]."','".$datos[1]."','".$datos[2]."',curdate(),'".$datos[3]."');";
+			
+			$this->insertar($query1);
+			$id=$this->lastId();
+			echo $query1;
+			
+			$query2="INSERT into vehiculo values(null,'".$datos[4]."','".$datos[5]."','".$datos[6]."','".$datos[7]."','".$datos[8]."','".$datos[9]."', $id ,'".$datos[10]."','".$datos[11]."');";
+			echo $query2;
+
+			$this->insertar($query2);
+			$this->commit();
+			header('location:duenio.php');
+			$this->desconectar();
+			
+		
+	}

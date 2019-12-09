@@ -1,0 +1,303 @@
+body{
+    background-color: rgba(0, 0, 0, 0.12);
+    font-family: 'Raleway', sans-serif;
+}
+/*LOGO Y HEADER*/
+.my-header {
+    max-height: 100px;
+    background-color: #222733;
+}
+.my-header .my-logo {
+    webkit-transition: width 0.9s cubic-bezier(0.81, -0.05, 0.24, 1.31);
+    -o-transition: width 0.9s ease-in-out;
+    transition: width 0.9s cubic-bezier(0.81, -0.05, 0.24, 1.31);
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 230px;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+}
+/*-----------------------------------*/
+
+
+/*DIv de la zona de menu derecha*/
+ .my-div-right{
+    float: right;
+    position: absolute;
+    right: 1px;
+    }
+/*---------------*/
+/*---ALERTA ICONO DE NOTIFICACION--------*/
+    .my-header .navbar .nav > li > a > .label {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    line-height: .9;
+    }
+
+    .label-default {
+    background-color: #f13720;
+    }
+/*-----------------------------*/
+/*SECCION DEL USUARIO*/
+.navbar-nav .user-menu .user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-top: -2px;
+    }
+.navbar-nav  .user-menu  .dropdown-menu {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 1px 0 0 0;
+    border-top-width: 0;
+    width: 240px;
+    height: 230px;
+    position: absolute;
+    right: 0px;
+    left: auto;
+}
+.navbar-nav  .user-menu  .dropdown-menu  li.my-user-header  img {
+    height: 90px;
+    width: 90px;
+    border: 3px solid;
+    border-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.navbar-nav  .user-menu .dropdown-menu  li.my-user-header {
+    height: 175px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.07);
+}
+.navbar-nav  .user-menu  .dropdown-menu  li.my-user-footer {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+/*-----------------------------*/
+
+/*Efectos sobre botones*/
+a:focus, a:hover{
+    
+    text-decoration: none;
+    background-color: rgba(8, 8, 8, 0.54);
+    color: #1AAE88;
+    font-weight: 400;
+    border-left: 1px groove #1AAE88;    
+    border-right: 1px groove #1AAE88;
+}
+a, .my-logo{
+    color: #fff;
+    text-decoration: none;
+}
+a:hover:focus, .my-logo{
+    color: #fff;
+    text-decoration: none;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    text-decoration: none;
+    background-color: rgba(8, 8, 8, 0.54);
+    color: #1AAE88;
+    font-weight: 400;
+    border-left: 1px groove #1AAE88;    
+    border-right: 1px groove #1AAE88;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+}
+/*------------------------------------------------------*/
+
+
+div#barra-menu {
+    overflow: visible;
+}
+
+
+/*----------------------------------------*/
+/*               Wrapper                */
+/*----------------------------------------*/
+
+#sidebar-wrapper {
+    position: absolute;
+    top: auto;
+    margin-top: -20px;
+    z-index: 100;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: auto;
+    background: #222733;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    
+}
+#wrapper.toggled #sidebar-wrapper {
+    width: 210px;
+}
+/*----------------------------------------*/
+/*----------------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;    
+}
+.sidebar-nav li {
+    position: relative; 
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 210px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 20px;
+    line-height: 44px;
+}
+.sidebar-nav li:.sidebar-brand a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+   
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    z-index: -1;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+}
+
+.sidebar-nav li.my-li-nav:before {
+    background-color: #151523;   
+}
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+}
+
+/*----------------------------------------*/
+
+/*-------------------------------*/
+/*    Botones Barra Superior     */
+/*-------------------------------*/
+
+.hamburger  {
+  
+  top: 0px;  
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: transparent;
+  color: #ffff;
+  border: none;
+}
+a.hamburger:hover{
+    color: #1aae88;
+    background: none;
+    border: none;
+}
+
+a.btnbarra:hover {
+    color: blue;
+    background: none;
+    border: none;
+    top:-10px;
+}
+/*------------------------------------------------*/
+/*Media Query*/
+@media (max-width: 767px){
+
+    .my-header .my-logo {
+    width: 100%;
+    }
+    .navbar-toggle{
+    float: left;
+    font-size: large;
+    top: -10px;
+    border-radius: 0px;
+    }
+    .my-navbar-left{
+    float: left;
+    background-color: #222733;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    width: 100px;
+    }
+    ul.nav.navbar-nav.my-right-ul {
+        display: -webkit-inline-box;
+        display: flex;
+    }
+    .my-div-right{
+        position: relative;
+        top: 0px;
+        right: 0px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar-nav > .user-menu > .dropdown-menu {
+    background-color: #fff;
+    position: absolute;
+    top: 42px;
+    }
+    .nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    height: 40px;
+    }
+}/*Cierra Media Query*/
+    
